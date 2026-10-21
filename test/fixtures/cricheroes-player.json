@@ -1,0 +1,321 @@
+{
+ "player_id": 10489930,
+ "profile": {
+  "player_id": 10489930,
+  "name": "Rudraprasanna Panda - Green Ball",
+  "is_pro": 1,
+  "profile_photo": "https://media.cricheroes.in/user_profile/1682445675594_gbS6zbpph5TP.jpg",
+  "city_id": 1798,
+  "city_name": "Bengaluru (Bangalore)",
+  "bowling_style": "Right-arm fast",
+  "batting_hand": "RHB",
+  "batter_category": "Accumulator",
+  "bowler_category": "Economist",
+  "playing_role": "All-Rounder",
+  "player_skill": "",
+  "total_views": 650,
+  "total_matches": 315,
+  "total_wickets": 215,
+  "total_runs": 3095,
+  "dob": "1988-07-19",
+  "player_statement": "A complete player, Rudraprasanna Panda - Green Ball has made a big mark in cricket. With 261 turns at the crease, they've hit a top score of <b>94</b>, with an average of <b>13.23</b> and a quick strike rate of <b>124.65</b>. Their knack for hitting big shots is evident with <b>157 sixes</b> and <b>306 fours</b>.</br></br>\n                      Equally good at bowling, they've bowled <b>500.2</b> overs, taking <b>215</b> wickets at an economy rate of <b>8.63</b>. Despite a few wides, their accuracy is top-notch, making them a key player for their team."
+ },
+ "statistics": {
+  "statistics": {
+   "batting": [
+    {
+     "title": "Matches",
+     "value": 315,
+     "is_user_property": 1
+    },
+    {
+     "title": "Innings",
+     "value": 261,
+     "is_user_property": 0
+    },
+    {
+     "title": "Not out",
+     "value": 27,
+     "is_user_property": 0
+    },
+    {
+     "title": "Runs",
+     "value": 3095,
+     "is_user_property": 1
+    },
+    {
+     "title": "Highest Runs",
+     "value": "94",
+     "is_user_property": 0
+    },
+    {
+     "title": "Avg",
+     "value": "13.23",
+     "is_user_property": 0
+    },
+    {
+     "title": "SR",
+     "value": "124.65",
+     "is_user_property": 0
+    },
+    {
+     "title": "30s",
+     "value": 18,
+     "is_user_property": 0
+    },
+    {
+     "title": "50s",
+     "value": 8,
+     "is_user_property": 0
+    },
+    {
+     "title": "100s",
+     "value": 0,
+     "is_user_property": 0
+    },
+    {
+     "title": "4s",
+     "value": 306,
+     "is_user_property": 0
+    },
+    {
+     "title": "6s",
+     "value": 157,
+     "is_user_property": 0
+    },
+    {
+     "title": "Ducks",
+     "value": 45,
+     "is_user_property": 0
+    },
+    {
+     "title": "Won",
+     "value": 146,
+     "is_user_property": 0
+    },
+    {
+     "title": "Loss",
+     "value": 155,
+     "is_user_property": 0
+    }
+   ],
+   "bowling": [
+    {
+     "title": "Matches",
+     "value": 315,
+     "is_user_property": 1
+    },
+    {
+     "title": "Innings",
+     "value": 209,
+     "is_user_property": 0
+    },
+    {
+     "title": "Overs",
+     "value": "500.2",
+     "is_user_property": 0
+    },
+    {
+     "title": "Maidens",
+     "value": 6,
+     "is_user_property": 0
+    },
+    {
+     "title": "Wickets",
+     "value": 215,
+     "is_user_property": 1
+    },
+    {
+     "title": "Runs",
+     "value": 4318,
+     "is_user_property": 0
+    },
+    {
+     "title": "Best Bowling",
+     "value": "5/18"
+    },
+    {
+     "title": "3 Wickets",
+     "value": 23,
+     "is_user_property": 0
+    },
+    {
+     "title": "5 Wickets",
+     "value": 1,
+     "is_user_property": 0
+    },
+    {
+     "title": "Economy",
+     "value": "8.63",
+     "is_user_property": 0
+    },
+    {
+     "title": "SR",
+     "value": "13.96",
+     "is_user_property": 0
+    },
+    {
+     "title": "Avg",
+     "value": "20.08",
+     "is_user_property": 0
+    },
+    {
+     "title": "Wides",
+     "value": 167,
+     "is_user_property": 0
+    },
+    {
+     "title": "NoBalls",
+     "value": 164,
+     "is_user_property": 0
+    },
+    {
+     "title": "Dot Balls",
+     "value": 1458,
+     "is_user_property": 0
+    },
+    {
+     "title": "4s",
+     "value": 301,
+     "is_user_property": 0
+    },
+    {
+     "title": "6s",
+     "value": 246,
+     "is_user_property": 0
+    }
+   ],
+   "fielding": [
+    {
+     "title": "Matches",
+     "value": 315
+    },
+    {
+     "title": "Catches",
+     "value": 83
+    },
+    {
+     "title": "Caught behind",
+     "value": 13
+    },
+    {
+     "title": "Run outs",
+     "value": 4
+    },
+    {
+     "title": "Stumpings",
+     "value": 0
+    },
+    {
+     "title": "Assisted Run Outs",
+     "value": 1
+    },
+    {
+     "title": "Bye Runs (WK)",
+     "value": 12
+    }
+   ],
+   "captain": [
+    {
+     "title": "Matches",
+     "value": 93
+    },
+    {
+     "title": "Toss Won",
+     "value": 40
+    },
+    {
+     "title": "Win Per",
+     "value": "48.35%"
+    },
+    {
+     "title": "Loss Per",
+     "value": "51.65%"
+    }
+   ]
+  }
+ },
+ "teams": [
+  {
+   "team_id": 450732,
+   "team_name": "Bang Bang Cricket",
+   "logo": "https://media.cricheroes.in/team_logo/1570524318359_U1MJHTLAv8zT.jpg",
+   "created_date": "2019-10-08T00:55:35.000Z",
+   "matches_played": 6,
+   "matches_won": 2,
+   "matches_loss": 4,
+   "is_verified": 1
+  },
+  {
+   "team_id": 1042188,
+   "team_name": "Central Park XI",
+   "logo": "https://media.cricheroes.in/default/teamintital/CP.png",
+   "created_date": "2021-01-14T15:17:20.000Z",
+   "matches_played": 5,
+   "matches_won": 2,
+   "matches_loss": 3,
+   "is_verified": 0
+  },
+  {
+   "team_id": 2580003,
+   "team_name": "CP Sm@shers",
+   "logo": "https://media.cricheroes.in/team_logo/1652262822833_GUQ87lVTqDfC.jpg",
+   "created_date": "2022-05-11T08:35:18.000Z",
+   "matches_played": 144,
+   "matches_won": 64,
+   "matches_loss": 71,
+   "is_verified": 0
+  },
+  {
+   "team_id": 12784691,
+   "team_name": "CP SMASHERS",
+   "logo": "https://media.cricheroes.in/team_logo/1773520724196_eg8UzRFAevVU.jpeg",
+   "created_date": "2026-03-14T20:38:43.000Z",
+   "matches_played": 7,
+   "matches_won": 4,
+   "matches_loss": 3,
+   "is_verified": 0
+  },
+  {
+   "team_id": 6466317,
+   "team_name": "CP-Sm@shers",
+   "logo": "https://media.cricheroes.in/team_logo/1710054860184_nkkkcqj5bxk0.jpg",
+   "created_date": "2024-03-10T04:57:53.000Z",
+   "matches_played": 138,
+   "matches_won": 64,
+   "matches_loss": 69,
+   "is_verified": 1
+  },
+  {
+   "team_id": 14250033,
+   "team_name": "LEO-XI",
+   "logo": "https://media.cricheroes.in/team_logo/1784536768557_L5k8DZ2A1X5k.jpg",
+   "created_date": "2026-07-20T08:24:49.000Z",
+   "matches_played": 5,
+   "matches_won": 3,
+   "matches_loss": 2,
+   "is_verified": 1
+  },
+  {
+   "team_id": 11301327,
+   "team_name": "Lighting Strikers",
+   "logo": "https://media.cricheroes.in/default/teamintital/LS.png",
+   "created_date": "2025-11-12T03:54:03.000Z",
+   "matches_played": 5,
+   "matches_won": 5,
+   "matches_loss": 0,
+   "is_verified": 0
+  },
+  {
+   "team_id": 7860321,
+   "team_name": "MavCric Warriors",
+   "logo": "https://media.cricheroes.in/team_logo/1732001422458_3aspkRcvgCF3.jpg",
+   "created_date": "2024-10-07T11:52:04.000Z",
+   "matches_played": 3,
+   "matches_won": 2,
+   "matches_loss": 1,
+   "is_verified": 0
+  }
+ ],
+ "matches": []
+}

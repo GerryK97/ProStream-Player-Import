@@ -1,0 +1,43 @@
+{
+  "name": "prostream-player-import",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Scrape CricHeroes / STUMPS player data and upload it to ProStream Scoreboard player profiles",
+  "scripts": {
+    "dev": "next dev -p 3100",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "^0.45.2",
+    "jose": "^6.2.13",
+    "lucide-react": "^1.61.0",
+    "next": "^16.4.2",
+    "pg": "^8.23.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^26.6.5",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.2",
+    "postcss": "^8.5.31",
+    "tailwindcss": "^4.2.2",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}

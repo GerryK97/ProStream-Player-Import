@@ -1,0 +1,170 @@
+{
+ "expected": {
+  "overview": {
+   "batting": {
+    "runs": 264,
+    "average": 52.8,
+    "high_score": "115*"
+   },
+   "bowling": {
+    "wickets": 9,
+    "average": 4.1,
+    "best_bowling": "4-1"
+   },
+   "fielding": {
+    "catches": 7,
+    "stumpings": 0,
+    "runouts": 0
+   },
+   "recent_form": {
+    "batting": [
+     "36*",
+     "12",
+     "55",
+     "0",
+     "115*"
+    ],
+    "bowling": [
+     "1-29",
+     "1-2",
+     "4-1",
+     "3-5",
+     null
+    ]
+   },
+   "yearly_overview": {
+    "batting": {
+     "this_year": {
+      "runs": 0,
+      "average": 0,
+      "high_score": 0
+     },
+     "last_year": {
+      "runs": 264,
+      "average": 52.8,
+      "high_score": "115*"
+     }
+    },
+    "bowling": {
+     "this_year": {
+      "wickets": 0,
+      "average": 0,
+      "best_bowling": 0
+     },
+     "last_year": {
+      "wickets": 9,
+      "average": 4.1,
+      "best_bowling": "4-1"
+     }
+    }
+   },
+   "best_against_team": {
+    "batting": [
+     {
+      "team": "black thunders",
+      "runs": 151,
+      "innings": 2,
+      "strike_rate": 359.5
+     },
+     {
+      "team": "titans",
+      "runs": 75,
+      "innings": 2,
+      "strike_rate": 441.2
+     }
+    ],
+    "bowling": [
+     {
+      "team": "titans",
+      "wickets": 4,
+      "innings": 1,
+      "economy": 1
+     },
+     {
+      "team": "alfha strikers",
+      "wickets": 3,
+      "innings": 1,
+      "economy": 5
+     }
+    ]
+   },
+   "awards": {
+    "player_of_the_match": null,
+    "player_of_the_tournament": null,
+    "hall_of_fame_club": 1,
+    "the_cricket_scorer": null
+   },
+   "matches_played": 7
+  },
+  "statistics": {
+   "by_format": {
+    "1": {
+     "format_code": 1,
+     "format": "T10",
+     "format_short": "T10",
+     "batting": {
+      "matches": 7,
+      "innings": 7,
+      "runs": 264,
+      "balls": 80,
+      "high_score": "115*",
+      "average": 52.8,
+      "strike_rate": 330,
+      "not_outs": 2,
+      "ducks": 1,
+      "hundreds": 1,
+      "fifties": 1,
+      "thirties": 1,
+      "sixes": 39,
+      "fours": 4
+     },
+     "bowling": {
+      "matches": 7,
+      "innings": 4,
+      "balls": 24,
+      "runs": 37,
+      "dots": 15,
+      "maidens": 0,
+      "wickets": 9,
+      "average": 4.1,
+      "economy": 9.3,
+      "best_bowling": "4-1",
+      "strike_rate": 2.7,
+      "three_wickets": 2,
+      "five_wickets": 0,
+      "ten_wickets": 0
+     },
+     "fielding": {
+      "catches": 7,
+      "stumpings": 0,
+      "runouts": 0
+     }
+    }
+   }
+  },
+  "player": {
+   "id": "ahan5390",
+   "uk": "-Og0ngaOURQpDbTTOeQL",
+   "name": "Sahan Nawanjana",
+   "name_raw": "SAHAN NAWANJANA",
+   "images": {
+    "thumbnail": "https://f002.backblazeb2.com/file/stumps-prod-images/stock_images/100x100_profile/0019.jpg",
+    "profile": "https://f002.backblazeb2.com/file/stumps-prod-images/stock_images/250x250_profile/0019.jpg",
+    "original": "https://f002.backblazeb2.com/file/stumps-prod-images/stock_images/profile/0019.jpg"
+   },
+   "verified": true,
+   "jersey_number": "33",
+   "roles": {
+    "playing_role_code": 3,
+    "playing_role": "All Rounder",
+    "batting_style_code": 1,
+    "batting_style": "Right Hand Bat",
+    "bowling_style_code": 2,
+    "bowling_style": "Right Arm Medium"
+   },
+   "profile_url": "https://stumpsapp.com/player/-Og0ngaOURQpDbTTOeQL",
+   "resolved_from_query": "ahan5390",
+   "resolved_match": "exact-pid"
+  }
+ }
+}
