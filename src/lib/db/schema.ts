@@ -113,5 +113,41 @@ export const directoryMemberships = pgTable('directory_memberships', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
+// "Bring my stats" requests (Scoreboard migration 0077). A profile owner asks
+// an Admin to add a CricHeroes or STUMPS career; the Admin works the queue here.
+// For CricHeroes, external_ref is a numeric id or, when the player only gave a
+// name, that name (resolved to an id on import).
+export const playerImportRequests = pgTable('player_import_requests', {
+  id: serial('id').primaryKey(),
+  directoryPlayerId: integer('directory_player_id').notNull(),
+  requesterUserId: text('requester_user_id').notNull(),
+  source: text('source').$type<'cricheroes' | 'stumps'>().notNull(),
+  externalRef: text('external_ref').notNull(),
+  sourceUrl: text('source_url').notNull(),
+  status: text('status').$type<'pending' | 'needs_info' | 'imported' | 'rejected' | 'cancelled'>().notNull(),
+  playerNote: text('player_note'),
+  adminNote: text('admin_note'),
+  decidedBy: text('decided_by'),
+  decidedAt: timestamp('decided_at'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+})
+
+// Shared in-app inbox (owned by the Auction service, same database).
+export const notifications = pgTable('notifications', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  type: text('type').notNull(),
+  title: text('title').notNull(),
+  body: text('body').notNull(),
+  data: text('data'),
+})
+
+export const devicePushTokens = pgTable('device_push_tokens', {
+  userId: text('user_id').notNull(),
+  expoPushToken: text('expo_push_token').notNull(),
+})
+
+export type PlayerImportRequestRow = typeof playerImportRequests.$inferSelect
 export type PlayerDirectoryRow = typeof playerDirectory.$inferSelect
 export type NewPlayerDirectoryRow = typeof playerDirectory.$inferInsert

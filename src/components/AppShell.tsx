@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
 const NAV = [
+  { href: '/requests', label: 'Requests' },
   { href: '/', label: 'Import player' },
   { href: '/teams', label: 'Import team' },
   { href: '/history', label: 'Recent imports' },
