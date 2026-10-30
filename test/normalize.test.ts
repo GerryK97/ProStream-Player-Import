@@ -120,6 +120,24 @@ test('STUMPS player decodes the cryptic API keys', () => {
   assert.equal(stat(p.careerStats.fielding, 'Catches'), t10.fielding.catches)
   assert.equal(p.careerStats.formats?.[0]?.format, 'T10')
   assert.deepEqual(p.summary, { matches: 7, runs: 264, wickets: 9 })
+
+  // Tournament, club and match history: titleCased, filtered, newest first.
+  const history = p.careerStats.history!
+  assert.equal(history.tournaments.length, 2)
+  assert.equal(history.tournaments[0].name, 'Agunawila Premier League 2025 Season 17 16 Years')
+  assert.equal(history.tournaments[0].completed, true)
+  assert.equal(history.tournaments[0].winner, 'Black Thunders')
+  assert.equal(history.tournaments[1].completed, null)
+  assert.equal(history.clubs.length, 1)
+  assert.equal(history.clubs[0].name, 'Wannimadu Sports Club')
+  assert.equal(history.clubs[0].city, 'Chilaw')
+  assert.equal(history.clubs[0].ballType, 'Tennis Ball')
+  // A row with neither a date nor a result is dropped.
+  assert.equal(history.matches.length, 1)
+  assert.equal(history.matches[0].battingTeam, 'Black Thunders')
+  assert.equal(history.matches[0].bowlingTeam, 'Golden Lions')
+  assert.equal(history.matches[0].result, 'Black Thunders Won By 7 Wickets')
+  assert.equal(history.matches[0].format, 'T10')
 })
 
 test('STUMPS multi-format statistics sum into career totals', () => {

@@ -62,6 +62,10 @@ export type StumpsPlayerExport = {
   statistics: Record<string, StumpsRow>
   teams: StumpsRow[]
   clubs: StumpsRow[]
+  /** Tournament history (name, location, completed, winner). No team roster endpoint exists for these. */
+  tournaments: StumpsRow[]
+  /** Match log (date, teams, scores, result). History only, never merged into stats. */
+  matches: StumpsRow[]
 }
 
 export async function searchPlayers(query: string, limit = 10): Promise<StumpsSearchHit[]> {
@@ -149,13 +153,17 @@ export async function resolvePlayer(
   return { ...fallback, match: 'best-effort' }
 }
 
-/** Fetch everything the importer needs for one player. Matches are skipped (not stored). */
+/** Fetch everything the importer needs for one player. */
 export async function fetchPlayer(input: string): Promise<StumpsPlayerExport> {
   const resolved = await resolvePlayer(input)
-  const [statistics, teams, clubs] = await Promise.all([
+  const [statistics, teams, clubs, tournaments, matches] = await Promise.all([
     getStatistics(resolved.uk),
     getTeams(resolved.uk),
     paginate(`/users/${encodeURIComponent(resolved.uk)}/clubs`, 50),
+    // Tournament rows page on `lmts` (last match timestamp), not `sts`.
+    paginate(`/users/${encodeURIComponent(resolved.uk)}/tournaments`, 50, 'lmts'),
+    // History only: never merged into career stats, so a generous cap is safe.
+    paginate(`/users/${encodeURIComponent(resolved.uk)}/matches`, 150),
   ])
   return {
     uk: resolved.uk,
@@ -166,5 +174,7 @@ export async function fetchPlayer(input: string): Promise<StumpsPlayerExport> {
     statistics,
     teams,
     clubs,
+    tournaments,
+    matches,
   }
 }

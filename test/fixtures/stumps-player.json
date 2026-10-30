@@ -109,5 +109,39 @@
    "upts": "2026-09-06T11:28:56.137Z",
    "sts": "2026-09-06T11:28:56.137Z"
   }
+ ],
+ "tournaments": [
+  {
+   "trk": "-OdqBPR3jDeRM-mUT381",
+   "trn": "AGUNAWILA PREMIER LEAGUE 2025 SEASON 17 16 YEARS",
+   "loc": "agunawila",
+   "iscomp": true,
+   "wnrn": "black thunders",
+   "lmts": "2025-12-28T11:30:50.987Z"
+  },
+  {
+   "trk": "-NoWinnerYet",
+   "trn": "ONGOING CUP",
+   "loc": null,
+   "lmts": "2026-01-05T00:00:00.000Z"
+  }
+ ],
+ "matches": [
+  {
+   "mk": "-OhZfYUkAd-1vV8T6jDy",
+   "trk": "-OdqBPR3jDeRM-mUT381",
+   "trn": "AGUNAWILA PREMIER LEAGUE 2025 SEASON 17 16 YEARS",
+   "mfmt": 1,
+   "mdt": "2025-12-28T00:00:00.000Z",
+   "mve": "AGUNAWILA",
+   "btmn": "black thunders",
+   "atmn": "golden lions",
+   "mrs": "BLACK THUNDERS won by 7 wickets",
+   "sts": "2025-12-28T11:30:50.987Z"
+  },
+  {
+   "mk": "-no-date-or-result",
+   "trn": "AGUNAWILA PREMIER LEAGUE 2025 SEASON 17 16 YEARS"
+  }
  ]
 }

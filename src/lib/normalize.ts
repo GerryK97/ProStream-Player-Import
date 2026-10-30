@@ -17,6 +17,18 @@ export type ExternalSource = 'cricheroes' | 'stumps'
 
 export type StatItem = { title: string; value: string | number }
 
+export type ImportedTournamentRef = { name: string; location: string | null; completed: boolean | null; winner: string | null; lastMatchAt: string | null }
+export type ImportedClubRef = { name: string; city: string | null; ballType: string | null }
+export type ImportedMatchRef = {
+  date: string | null
+  tournament: string | null
+  format: string | null
+  battingTeam: string | null
+  bowlingTeam: string | null
+  result: string | null
+  venue: string | null
+}
+
 export type CareerStats = {
   batting: StatItem[]
   bowling: StatItem[]
@@ -26,6 +38,15 @@ export type CareerStats = {
   source: ExternalSource
   sourceUrl: string
   fetchedAt: string
+  /**
+   * Plain cricket history from the source: tournaments played, clubs, and a
+   * match log. Shown next to the profile, never merged into stats totals.
+   */
+  history?: {
+    tournaments: ImportedTournamentRef[]
+    clubs: ImportedClubRef[]
+    matches: ImportedMatchRef[]
+  }
 }
 
 export type ScrapedTeamRef = {
@@ -406,6 +427,58 @@ export function stumpsProfileUrl(uk: string): string {
   return `https://stumpsapp.com/player/${encodeURIComponent(uk)}`
 }
 
+const STUMPS_BALL_TYPE: Record<string, string> = { T: 'Tennis Ball', L: 'Red Ball', LT: 'Red + Tennis Ball' }
+
+function stumpsTournamentRef(t: StumpsRow): ImportedTournamentRef | null {
+  const name = nn(t.trn)
+  if (!name) return null
+  return {
+    name: titleCase(name),
+    location: nn(t.loc) ? titleCase(String(t.loc)) : null,
+    completed: typeof t.iscomp === 'boolean' ? t.iscomp : null,
+    winner: nn(t.wnrn) ? titleCase(String(t.wnrn)) : null,
+    lastMatchAt: nn(t.lmts),
+  }
+}
+
+function stumpsClubRef(c: StumpsRow): ImportedClubRef | null {
+  const name = nn(c.cn)
+  if (!name) return null
+  return {
+    name: titleCase(name),
+    city: nn(c.ci) ? titleCase(String(c.ci)) : null,
+    ballType: STUMPS_BALL_TYPE[String(c.bt ?? '')] ?? null,
+  }
+}
+
+function stumpsMatchRef(m: StumpsRow): ImportedMatchRef | null {
+  // A match needs at least a date or a result to be worth showing.
+  const date = nn(m.mdt)
+  const result = nn(m.mrs)
+  if (!date && !result) return null
+  return {
+    date,
+    tournament: nn(m.trn) ? titleCase(String(m.trn)) : null,
+    format: STUMPS_FORMAT[Number(m.mfmt)] ?? null,
+    battingTeam: nn(m.btmn) ? titleCase(String(m.btmn)) : null,
+    bowlingTeam: nn(m.atmn) ? titleCase(String(m.atmn)) : null,
+    result: result ? titleCase(result) : null,
+    venue: nn(m.mve) ? titleCase(String(m.mve)) : null,
+  }
+}
+
+/** Tournaments, clubs and a match log, newest first, capped to a sane display size. */
+export function stumpsHistory(raw: StumpsPlayerExport): CareerStats['history'] {
+  const tournaments = (raw.tournaments ?? []).map(stumpsTournamentRef).filter((t): t is ImportedTournamentRef => t !== null)
+  const clubs = (raw.clubs ?? []).map(stumpsClubRef).filter((c): c is ImportedClubRef => c !== null)
+  const matches = (raw.matches ?? [])
+    .map(stumpsMatchRef)
+    .filter((m): m is ImportedMatchRef => m !== null)
+    .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
+    .slice(0, 150)
+  return { tournaments, clubs, matches }
+}
+
 export function normalizeStumpsPlayer(raw: StumpsPlayerExport, fetchedAt = new Date()): ScrapedPlayer {
   const o = raw.overview ?? {}
   const nameRaw = nn(o.un) ?? nn(raw.hit?.un) ?? 'Unknown Player'
@@ -442,6 +515,7 @@ export function normalizeStumpsPlayer(raw: StumpsPlayerExport, fetchedAt = new D
       source: 'stumps',
       sourceUrl: url,
       fetchedAt: fetchedAt.toISOString(),
+      history: stumpsHistory(raw),
     },
     teams: (raw.teams ?? []).map(stumpsTeamRef).filter((t): t is ScrapedTeamRef => t !== null),
     raw,
