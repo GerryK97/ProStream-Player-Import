@@ -148,6 +148,32 @@ export const devicePushTokens = pgTable('device_push_tokens', {
   expoPushToken: text('expo_push_token').notNull(),
 })
 
+// Matches a person scored on another platform (Scoreboard migration 0088). The
+// Scoreboard shows them on /scorers/<publicCode>; never joined into stats.
+export const scoredMatchImports = pgTable('scored_match_imports', {
+  id: serial('id').primaryKey(),
+  directoryPlayerId: integer('directory_player_id').notNull(),
+  source: text('source').$type<'stumps' | 'cricheroes'>().notNull(),
+  externalMatchId: text('external_match_id').notNull(),
+  externalTournamentId: text('external_tournament_id'),
+  tournamentName: text('tournament_name'),
+  matchLabel: text('match_label'),
+  format: text('format'),
+  venue: text('venue'),
+  playedAt: timestamp('played_at'),
+  teamA: text('team_a').notNull(),
+  teamAScore: text('team_a_score'),
+  teamB: text('team_b').notNull(),
+  teamBScore: text('team_b_score'),
+  result: text('result'),
+  completed: boolean('completed').notNull().default(true),
+  duplicateOfId: integer('duplicate_of_id'),
+  raw: jsonb('raw'),
+  importedBy: text('imported_by'),
+  importedAt: timestamp('imported_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+})
+
 export type PlayerImportRequestRow = typeof playerImportRequests.$inferSelect
 export type PlayerDirectoryRow = typeof playerDirectory.$inferSelect
 export type NewPlayerDirectoryRow = typeof playerDirectory.$inferInsert

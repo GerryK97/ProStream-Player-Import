@@ -153,6 +153,21 @@ export async function resolvePlayer(
   return { ...fallback, match: 'best-effort' }
 }
 
+/**
+ * Everything needed for a scoring record: the person, every match the gateway
+ * lists for them (scorers can have hundreds, so the cap is high) and their
+ * tournaments. `overview.a5` is STUMPS' own count of matches they scored.
+ */
+export async function fetchScorer(input: string, maxMatches = 2000): Promise<Pick<StumpsPlayerExport, 'uk' | 'query' | 'match' | 'hit' | 'overview' | 'tournaments' | 'matches'>> {
+  const resolved = await resolvePlayer(input)
+  const key = encodeURIComponent(resolved.uk)
+  const [tournaments, matches] = await Promise.all([
+    paginate(`/users/${key}/tournaments`, 200, 'lmts'),
+    paginate(`/users/${key}/matches`, maxMatches),
+  ])
+  return { uk: resolved.uk, query: input, match: resolved.match, hit: resolved.hit, overview: resolved.overview, tournaments, matches }
+}
+
 /** Fetch everything the importer needs for one player. */
 export async function fetchPlayer(input: string): Promise<StumpsPlayerExport> {
   const resolved = await resolvePlayer(input)

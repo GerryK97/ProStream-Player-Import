@@ -222,6 +222,14 @@ function RequestDetail({ item, onDone }: { item: QueueItem; onDone: () => void }
               Open on {SOURCE_LABEL[item.source]} ↗
             </a>
           )}
+          {item.source === 'stumps' && !item.byName && (
+            <a
+              href={`/scoring?ref=${encodeURIComponent(item.externalRef)}&playerId=${item.profile.id}`}
+              className="mt-1 block text-xs font-semibold text-primary-dark hover:underline"
+            >
+              A scorer? Import the matches they scored instead →
+            </a>
+          )}
           {item.playerNote && <p className="mt-2 rounded-lg bg-app-surface-alt px-2 py-1.5 text-sm">“{item.playerNote}”</p>}
           {item.adminNote && <p className="mt-2 text-xs text-app-muted">Admin note: {item.adminNote}</p>}
         </Box>

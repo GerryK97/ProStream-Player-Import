@@ -8,6 +8,8 @@ import { getDb } from './db'
 export type Capabilities = {
   database: boolean
   sources: { cricheroes: boolean; stumps: boolean }
+  /** Scoreboard migration 0088 (scored_match_imports) is applied. */
+  scoringRecord: boolean
   error?: string
 }
 
@@ -23,14 +25,17 @@ export async function getCapabilities(force = false): Promise<Capabilities> {
       WHERE t.typname = 'directory_source'
     `)
     const labels = new Set((res.rows as Array<{ label: string }>).map((r) => r.label))
+    const scoring = await getDb().execute(sql`SELECT to_regclass('public.scored_match_imports') IS NOT NULL AS ok`)
     value = {
       database: true,
       sources: { cricheroes: labels.has('cricheroes'), stumps: labels.has('stumps') },
+      scoringRecord: Boolean((scoring.rows[0] as { ok?: boolean } | undefined)?.ok),
     }
   } catch (err) {
     value = {
       database: false,
       sources: { cricheroes: false, stumps: false },
+      scoringRecord: false,
       error: err instanceof Error ? err.message : 'Database unavailable',
     }
   }
@@ -39,6 +44,14 @@ export async function getCapabilities(force = false): Promise<Capabilities> {
 }
 
 export class CapabilityError extends Error {}
+
+export async function assertScoringWritable() {
+  const caps = await getCapabilities()
+  if (!caps.database) throw new CapabilityError(`Database unavailable: ${caps.error ?? 'unknown error'}`)
+  if (!caps.scoringRecord) {
+    throw new CapabilityError('The database has no scoring record table yet. Apply Scoreboard migration 0088_scored_match_imports.sql.')
+  }
+}
 
 export async function assertSourceWritable(source: 'cricheroes' | 'stumps') {
   const caps = await getCapabilities()

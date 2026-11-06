@@ -9,6 +9,7 @@ Admin-only Next.js application for scraping player data from CricHeroes and STUM
 - Suggests matching profiles already in ProStream before publishing.
 - Creates or enriches profiles using the unique `(source, external_id)` identity, so repeat imports are idempotent.
 - Imports a CricHeroes team roster with visible per-player progress.
+- Imports a scorer's **scoring record** from STUMPS (Scoring record tab): every completed match they scored, grouped by tournament, written to `scored_match_imports` and shown on the Scoreboard at `/scorers/<publicCode>`. Never counted in player stats. Re-importing refreshes the same rows.
 - Authenticates against the existing Scoreboard `users` table and permits Admin accounts by default.
 
 ## Data-only guarantee
@@ -47,6 +48,8 @@ ProStream-Scoreboard/drizzle/migrations/0072_directory_source_stumps.sql
 ```
 
 It adds the `stumps` label to the existing `directory_source` PostgreSQL enum. The migration is additive and idempotent.
+
+The Scoring record tab also needs `0088_scored_match_imports.sql` (applied in production on 2026-11-06). Without it the tab explains the missing migration instead of failing.
 
 ## Dokploy
 

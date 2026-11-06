@@ -7,6 +7,7 @@ const NAV = [
   { href: '/requests', label: 'Requests' },
   { href: '/', label: 'Import player' },
   { href: '/teams', label: 'Import team' },
+  { href: '/scoring', label: 'Scoring record' },
   { href: '/history', label: 'Recent imports' },
 ]
 
@@ -28,12 +29,12 @@ export function AppShell({ user, scoreboardUrl, children }: { user: { displayNam
             <span className="text-xs font-semibold tracking-widest text-primary uppercase">ProStream</span>
             <span className="font-bold">Player Import</span>
           </div>
-          <nav className="flex gap-1 text-sm">
+          <nav className="-mx-1 flex max-w-full gap-1 overflow-x-auto px-1 text-sm [scrollbar-width:none]">
             {NAV.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
-                className={`rounded-md px-3 py-1.5 transition ${pathname === n.href ? 'bg-white/15 font-semibold' : 'text-white/70 hover:bg-white/10 hover:text-white'}`}
+                className={`shrink-0 whitespace-nowrap rounded-md px-3 py-1.5 transition ${pathname === n.href ? 'bg-white/15 font-semibold' : 'text-white/70 hover:bg-white/10 hover:text-white'}`}
               >
                 {n.label}
               </Link>
